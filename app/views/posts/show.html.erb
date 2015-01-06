@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<%= render :partial=> @post %>
+<h2>评论页面</h2>
+<% @post.comments.each do |comment|%>
+  <div id ="comment">
+    <p>
+      <strong>评论 <%= time_ago_in_words(comment.created_at)%></strong>
+      <br>
+      <%= comment.content %>
+    </p>
+  </div>
+
+<%end%>
+ <%= form_for [@post ,Comment.new] do |f| %>
+   <p>
+    <%=f.label :content, "新评论"%>
+    <%= f.text_area :content%>
+  </p>
+   <%=f.submit "提交"%>
+ <%end%>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

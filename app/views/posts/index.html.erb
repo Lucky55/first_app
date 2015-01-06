@@ -1,0 +1,15 @@
+<h1>当前页面</h1>
+
+
+
+<% @posts.each do |post| %>
+   <%=render :partial=> post %>
+    <%= link_to '修改', edit_post_path(post) %></td>
+    <%= link_to '删除', post, method: :delete, data: { confirm: 'Are yore?' } %></td>
+  
+<% end %>
+
+
+<br />
+
+<%= link_to '新增', new_post_path %>
